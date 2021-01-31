@@ -1,0 +1,8 @@
+创建
+		git init
+		
+克隆
+		git clone remoteURL
+		
+更新
+		git pull

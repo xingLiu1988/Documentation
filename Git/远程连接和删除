@@ -1,0 +1,5 @@
+连接
+		git remote add origin remoteURL
+
+删除
+		git remote remove origin

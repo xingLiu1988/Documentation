@@ -1,0 +1,11 @@
+设置用户名
+		git config --global user.name “firstname lastname”
+		
+设置邮箱
+		git config --global user.email “valid-email”
+		
+设置彩色
+		git config --global color.ui auto
+		
+查看配置信息
+		git config --list
