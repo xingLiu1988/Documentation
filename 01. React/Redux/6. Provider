@@ -1,0 +1,21 @@
+如何使用Provider
+    
+    //第一步：引入Provider
+    import {Provider} from 'react-redux';
+    
+    //第二步：添加Provider组件到应用程序
+    <Provider>
+      <div className="App">
+        <Cake />
+      </div>
+    </Provider>
+    
+    //第三步：导入store对象文件夹
+    import store from './redux/store';
+
+    //第四步：在Provider组件中添加store
+    <Provider store={store}>
+      <div className="App">
+        <Cake />
+      </div>
+    </Provider>

@@ -1,0 +1,74 @@
+1. 如何使用test()方法
+        regEx.test(string);
+        
+2. | 的使用
+        /yes|no|maybe/;
+        
+3. /hello/i 中的i的使用
+
+4. /hello/g 中的g的使用
+
+5. match() 的使用
+        string.match(regEx);
+        
+6. Wildcard period . 的使用
+        /hu./
+
+7. square bracket [] 的使用
+        b[aiu]g
+        
+8. [a-z] 的理解
+
+9. [0-9] 的理解
+
+10. [a-z0-9] 的理解
+
+11. /[^aeiou0-9]/gi 的^的理解
+
+12. /a+/g 的+的理解
+        
+13. /go*/ 的*的理解
+
+14. greedy match
+        /t[a-z]*i/
+
+15. lazy match
+        /t[a-z]*?i/
+
+16. /^Ricky/ 的^的理解
+
+17. /story$/ 的$的理解
+        
+18. /\w/ 的理解
+
+19. /\W/ 的理解
+
+20. /\d/ 的理解
+
+21. /\D/ 的理解
+
+22. /\s/ 的理解
+
+23. /\S/ 的理解
+
+24. /a{3,5}h/ 的{3,6} 的理解
+
+25. /ha{3,}h/ 的{3,} 的理解
+
+26. /ha{3}h/ 的{3} 的理解
+
+27. /colou?r/ 的? 的理解
+
+28. positive lookahead (?=...)
+        (?=\w{3,6})(?=\D*\d)
+        
+29. negetive lookahead (?!...)
+        (?!u)
+30. /P(engu|umpk)in/ mixed Grouping of CharactersPassed的理解
+
+31. Capture Groups
+        /(\w+)\s\1/
+        /^(\d+)\s\1\s\1$/
+32. "Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1'); 的理解
+
+33. 

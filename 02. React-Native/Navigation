@@ -1,0 +1,82 @@
+Packages And Dependency
+        npm install @react-navigation/native
+        expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+        npm install @react-navigation/stack
+        
+Starting Template Stack
+        import 'react-native-gesture-handler';
+        import React from 'react';
+        import { View, Text } from 'react-native';
+        import { NavigationContainer } from '@react-navigation/native';
+        import { createStackNavigator } from '@react-navigation/stack';
+        function HomeScreen() {
+          return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Text>Home Screen</Text>
+            </View>
+          );
+        }
+        const Stack = createStackNavigator();
+        function App() {
+          return (
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          );
+        }
+        export default App;
+        
+Moving Between Screens
+        onPress={() => navigation.navigate('Details')}
+        onPress={() => navigation.push('Details')}
+        onPress={() => navigation.goBack()}
+        onPress={() => navigation.popToTop()}
+        
+Passing Parameters To Routes
+        navigation.navigate('Details', {itemId: 86});
+        
+Receive Parameters from Routes
+        //接收页面需定义接收参数
+        function DetailsScreen({ route, navigation }) {
+          //获取值
+          const { itemId } = route.params;
+          //通过json打印
+          <Text>{JSON.stringify(itemId)}</Text>
+        }
+        
+Configuring the header bar
+        //指定一个样式
+        <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: 'My home',
+              headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
+        />
+        //指定全部样式
+        <Stack.Navigator
+              screenOptions={{
+                headerStyle: {
+                  backgroundColor: '#f4511e',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+              }}
+         >
+         
+Tab Navigation
+
+        
+
+        

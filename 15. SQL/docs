@@ -1,0 +1,51 @@
+SQL参考说明书 排序 CRUD create, read, update, delete
+
+1. create
+    a. 如何创建database
+        CREATE DATABASE testDB;
+
+    b. 如何创建table
+        CREATE TABLE Persons (
+            PersonID int NOT NULL,
+            LastName varchar(255),
+            FirstName varchar(255),
+            Address varchar(255),
+            City varchar(255),
+            ProductID int,
+            PRIMARY KEY(PersonID),
+            FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+        );
+
+    c. 
+2. read
+    a. 如何获取数据
+        方法1: 
+            SELECT CustomerName,City FROM Customers;
+        方法2:
+            SELECT * FROM Customers;
+        方法3:
+            SELECT DISTINCT Country FROM Customers;
+        方法4:
+            SELECT * FROM Customers WHERE Country='Mexico';
+3. update
+    a. 如何修改列表数据
+        UPDATE Customers
+        SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+        WHERE CustomerID = 1;
+        
+    b. 如何在table中添加新列表
+        ALTER TABLE Customers
+        ADD Email varchar(255);
+4. delete
+    a. 如何删除database
+        DROP DATABASE testDB;
+
+    b. 如何删除table
+        DROP TABLE Shippers;
+        
+    c. 如何删除数据列表
+        方法1:
+            DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+        方法2:
+            DELETE FROM Customers
+      

@@ -1,0 +1,14 @@
+什么是Switch
+    在多个路由之间选择匹配的路由
+
+如何使用：
+    1. 需要引入 
+        import {BrowserRouter, Switch} from 'react-router-dom'
+    2. 插入点
+        <BrowserRouter>
+            <Switch>
+                <Router path='/login' component={Login}></Router>
+                <Router path='/vip' component={Vip}></Router>
+            </Switch>
+            
+        </BrowserRouter>

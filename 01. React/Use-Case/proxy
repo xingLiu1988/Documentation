@@ -1,0 +1,5 @@
+什么是proxy
+    代理服务器，当react前端发送请求给express后端服务器的时候，需要中间商，proxy让我们指定端口，用于访问需要传递后端的地址
+    
+如何使用
+    1. 在package.json文件夹中指定 "proxy": "http://localhost:5000" //端口号5000要根据您express后端端口而改变

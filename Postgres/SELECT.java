@@ -21,11 +21,11 @@ FROM
    customer;
 
 
-// 4. sample 3
+// 4. sample 3 => all
 SELECT * FROM customer;
 
 
-// 5. sample 4
+// 5. sample 4 => combine two column into one
 SELECT 
    first_name || ' ' || last_name,
    email

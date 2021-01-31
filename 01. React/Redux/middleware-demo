@@ -1,0 +1,10 @@
+如何使用middleware
+    
+    //第一步：下载要使用的middleware包，并引入
+    const thunkMiddleware = require('redux-thunk').default
+    
+    //第二部：创建redux下的applyMiddleware对象
+    const applyMiddleware = redux.applyMiddleware
+    
+    //第三步：在store对象中添加函数applyMiddleware
+    const store = createStore(reducer, applyMiddleware(thunkMiddleware))

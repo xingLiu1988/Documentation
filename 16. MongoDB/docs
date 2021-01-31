@@ -1,0 +1,76 @@
+mongoDB 常用操作指南
+    注：mongoDB一般用于对终端的操作，而实际操作时是使用mongoose包在服务端进行操作
+
+1. 命令行操作
+    - 启动本地mongoDB数据库服务器
+        >> mongod
+    - 连接本地数据库
+        >> mongo
+    - 显示所有数据库
+        >> show dbs
+    - 显示当前数据库
+        >> db
+    - 显示当前collections
+        >> show collections
+    - 使用进入数据库
+        >> use databaseName
+    - 删除当前数据库
+        >> db.dropDatabase();
+    - 删除collections
+        >> db.collectionsName.drop();
+
+1.1 服务端使用mongoDB步骤
+    - 获取mongoDB数据包
+        >> const mongoose = require('mongoose);
+    - 连接本地数据库
+        >> mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
+    - 连接远程数据库
+        >> https://account.mongodb.com/account/login
+    - 创建Schema，数据结构
+    - 创建mondel，创建table
+    - 创建对象并插入使用
+- 常用其他方法
+    1. count()
+    2. 
+
+
+2. CRUD操作
+    - create插入
+        db.collectionsName.insertOne({name: "xing"});//插入单数据
+        db.collectionsName.insert([{name: "xing"}, {name: "yan"}]);//插入多数据
+        db.collectionsName.insertMany([{name: "xing"}, {name: "yan"}]);//插入多数据
+        //向集合中添加20000条数据
+            for(var i =1; i <= 20000; i++){
+                db.collectionsName.insert(num: i);
+            }
+            上面方法执行时间7.2秒
+            下面方法执行0.4秒
+            var arr = [];
+            for(var i = 1; i <=20000; i++){
+                arr.push({num:1});
+            }
+            db.collectionsName.insert(arr);
+
+    - read
+        db.collectionsName.find();//查找所有
+        db.collectionsName.find(name: "xing");//带条件查询
+        db.collectionsName.fineOne(name: "xing");//查询第一个符合条件的
+        db.collectionsName.find({"hobby.movies":"hero"});//内嵌文档查找，属性必须双引号
+        db.collectionsName.find({age:{$gt:500}});
+
+    - update
+        db.collectionsName.update({name: "xing"}, {$set:{age: 40}}); //修改文档属性
+        db.collectionsName.update({name: "xing"}, {$unset:{age: 40}}); //删除其中的属性
+        db.collectionsName.replaceOne({username:"zhubajie"},{username:"tangsent"});//替换zhubajie为tangsent
+        db.collectionsName.update({name:"xing"}, {$push:{"hobby.moves":{"new"}}});//向数组中添加文本，如重复，继续照样添加
+        db.collectionsName.update({name:"xing"}, {$addToSet:{"hobby.moves":{"new"}}});//向数组中添加文本，如重复则不添加
+    - delete
+        db.collectionsName.remove({name: "xing"}) //删除特定条件文本
+            >> 默认情况下会删除所有特定文本，如只删除一个需要添加true
+            >> 如果只传递空文本{}将会删除所有
+        db.collectionsName.deleteOne({name: "xing"})
+        db.collectionsName.deleteMany({})
+        db.collectionsName.remove({"hobby.cities":"beijing"});//删除内嵌元素带有北京的文本
+        db.collectionsName.remove({});//清空集合
+3. 练习MONGODB网址
+    https://www.youtube.com/watch?v=FQbXLg5EbxY&list=PLmOn9nNkQxJGX-finJqCSVVZx3gwn4Rga&index=11&t=469s

@@ -1,0 +1,8 @@
+dotenv
+  是什么：用于存放环境变量，隐藏您的密码类信息
+  安装：npm install dotenv
+  使用：require('dotenv').config() //在后端服务器代码中插入，插入点，第一行
+  创建文件夹：touch .env
+  格式：DB_HOST=localhost //在.env文件夹中插入
+  上传：在gitignore中添加.env
+  获取数据：process.env.VARIABLE

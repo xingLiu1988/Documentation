@@ -1,0 +1,2 @@
+1. 如何COPY远程应用程序
+    heroku git:clone -a  appName

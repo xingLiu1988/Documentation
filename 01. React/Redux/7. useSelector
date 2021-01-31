@@ -1,0 +1,7 @@
+如何使用useSelectore
+
+    //第一步：引入useSelector
+    import {useSelector} from 'react-redux';
+
+    //第二步：使用useSelector方法
+    const numOfCake = useSelector(state => state.numOfCake);

@@ -1,0 +1,13 @@
+如何combine reducers
+
+    //第一步：引入redux中的对象combineReducers
+    import { createStore, combineReducers } from 'redux';
+    
+    //第二步：通过combineReducers合并reducers
+    const rootReducers = combineReducers({
+      cake: cakeReducer,
+      cheese: cheeseReducer
+    })
+    
+    //第三步：在createStore方法中插入rootReducers
+    const store = createStore(rootReducers)

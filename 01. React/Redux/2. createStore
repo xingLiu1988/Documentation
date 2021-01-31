@@ -1,0 +1,11 @@
+如何创建store
+
+    //第一步：引入redux和cakeReducer
+    import { createStore } from 'redux';    
+    import cakeReducer from './cake';
+    
+    //第二步：创建store对象
+    const store = createStore(cakeReducer)
+
+    //第三步：导出store到应用程序
+    export default store

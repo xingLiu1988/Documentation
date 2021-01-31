@@ -1,0 +1,6 @@
+什么是Route
+    路由
+    
+如何使用
+    1. import {Route} from 'react-router-dom'
+    2. <Router path='/login' component={Login}></Router>

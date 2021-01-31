@@ -1,0 +1,143 @@
+mongoose操作指南
+
+使用步骤
+    1. 下载mongoose
+            npm i mongoose
+    2. 引入数据包
+            var mongoose = require("mongoose");
+    3. 连接本地数据库
+            mongoose.connect("mongodb://localhost/mongoose_test", { useNewUrlParser: true });
+    3. 连接远程数据库
+            https://account.mongodb.com/account/login
+    4. 创建Schema对象
+            String, Number, Date, Buffer, Bollean, Mixed, ObjectID, Array
+            const fruitSchema = new mongoose.Schema({
+                name: {
+                    type: String,
+                    required: [true, "Please enter your name"]
+                },
+                rating: {
+                    type: Number,
+                    required: [true, "请输入RATING"],
+                    min: [1, "最低是1"],
+                    max: [5, "最高是5"]
+                },
+                review: String
+            });
+    5. 创建Collection对象
+            const Fruit = mongoose.model("Fruit", fruitSchema);
+
+CRUD操作 https://mongoosejs.com/docs/api/model.html
+    1. CREATE 
+        方法1: 
+            const fruit = new Fruit({
+                name: "Apple",
+                rating: 7,
+                review: "Pretty solid as a fruit"
+            });
+            fruit.save();
+        方法2：
+            Job.create({
+                name: "孙悟空",
+                age: 38,
+                address: "石头里",
+                gender: "男"
+            }, function(err, docs){
+                if(!err){
+                    console.log("插入一条数据成功~~~");
+                }
+            });
+    2. READ
+        方法1: 通过模型查询数据,常用OPTION有：skip(跳过), limit(限制显示个数)
+            Fruit.find({}, function(err, results){
+                if(!err){
+                    console.log(results);
+                }
+            }); 
+        方法2：
+    3. UPDATE
+        方法1：
+            参数说明：第一参数,修改对象，第二参数，修改为，第三为CALLBACK
+            Fruit.updateOne({id: "1"}, {name: "Peach"}, function(err){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log("Successfully updated the document.");
+                }
+            });
+        方法2：这个需要研究很好的东西，只修改接收到的参数
+            Fruit.update({title: req.params.articleTitle}, {$set: req.body},function(err){
+                if(!err){
+                    res.send("OK");
+                }
+            })
+    4. DELETE
+        方法1：
+            参数说明：第一参数：需要删除的对象
+            Fruit.deleteOne({name: "Peach"}, function(err){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log("Successfully deleted the document");
+                }
+            });    
+    5. 监听数据库的连接
+        //是否连接着
+        //是否断开
+        
+其它类型说明
+    1. 特殊需求
+        a. Is there a way to user mongoose.find({title:'some title'}) to query the same field with multiple values?
+            >> mongoose.find({title: {$in: ['some title', 'some other title']}})
+    2. sort()
+        接收参数属性：1， -1
+            1：表示从小到大 或 升序
+            -1: 表示从大到小 或 降序
+        例子：
+            .sort({salary: 1}) //按工资从低到高
+            .sort ({salary: 1, date: -1}) //按工资从低到高，然后再按时间大到小
+    3. find({},{})
+        find所接收的第二个参数: 
+            find({},{firstName: 1，_id: 0}) //索引将还回firstname属性，1为显示，0为不显示，同样其它属性也将不显示
+        
+        
+        
+        
+        
+        
+    mongoose.练习题
+        1. 进入my_test数据库
+            use my_test
+        2. 向数据库的user集合中插入一个文档
+            db.users.insert({
+                username: 'sunwukong'
+            });
+        3. 显示数据库
+            show dbs
+        4. 显示集合
+            show collections
+        5. 查询user集合中的文档
+            db.users.find();
+        6. 统计数据库中user集合的文档数量
+            db.users.find().count();
+        7. 查询数据库user集合中username为sunwukong的文档
+            db.users.find({username: 'sunwukong'});
+        8. 向数据库user集合中的username为sunwukong的文档，添加一个address属性，属性值为huaguoshan
+            db.user.update({username: 'sunwukong'}, {$set:{address:'huaguoshan'}});
+        9. 使用{username:'tangseng'} 替换username为zhubajie的文档
+            db.users.replaceOne({username: 'zhubajie'}, {username:'tangseng'});
+        10. 删除username为sunwukong的文档中的address属性
+            db.users.update({username:'sunwukong'}, {$unset:{address:1}});
+            
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        `
+ending

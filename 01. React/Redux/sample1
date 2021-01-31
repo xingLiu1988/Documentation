@@ -1,0 +1,51 @@
+import React from 'react';
+import {useSelector,useDispatch} from 'react-redux';
+import axios from 'axios';
+import { useEffect } from 'react';
+import {fetchUserRequest, fetchUserSuccess, fetchUserFailure} from './redux/user';
+function Demo() {
+    //获取redxu数据
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    //获取服务器数据
+    useEffect(()=> {
+        if(user.data.length === 0){
+            console.log('useEffect()');
+            dispatch(fetchUserRequest());
+            axios.get("https://jsonplaceholder.typicode.com/users")
+            .then(response => {
+                const users = response.data;
+                dispatch(fetchUserSuccess(users));
+            })
+            .catch(error => {
+                dispatch(fetchUserFailure(error.message));
+            })
+        }
+    },[])
+    
+    if(user.loading === true){
+        return (
+            <div>loading</div>
+        )
+    }else {
+        return (
+            <div>
+                <h2>Demo Page</h2>
+                <hr/>
+                {/* 显示数据 */}
+                {
+                    user.data.map(item => <p>{item.id} {item.name}</p>)
+                }
+                <div>
+                    {
+                        user.error
+                    }
+                </div>
+            </div>
+            
+        )
+    }
+    
+}
+
+export default Demo

@@ -1,0 +1,13 @@
+如何使用useDispatch
+    
+    //第一步：引入useDispatch
+    import {useSelector, useDispatch} from 'react-redux';
+    
+    //第二步：创建useDispatch()对象
+    const dispatch = useDispatch();
+    
+    //第三步：引入要使用的action
+    import {buyCake} from '../redux/cake';
+    
+    //第四步：使用dispatch()方法
+    <button onClick = {() => dispatch(buyCake())}>Buy Cake</button>

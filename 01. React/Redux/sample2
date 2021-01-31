@@ -1,0 +1,32 @@
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUsers, filterUserRequest } from "./redux/users";
+
+function Demo() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
+
+  const users = useSelector(state => state.users.users);
+  const filteredUsers = useSelector(state => state.users.filteredUsers);
+  const loading = useSelector(state => state.users.loading);
+  function filter() {
+    const arr = users.filter(user => user.id > 2);
+    dispatch(filterUserRequest(arr));
+  }
+  if (loading === true) {
+    return <h2>loading</h2>;
+  } else {
+    return (
+      <div>
+        {filteredUsers.map(item => (
+          <li>{item.id}</li>
+        ))}
+        <button onClick={filter}>filter</button>
+      </div>
+    );
+  }
+}
+
+export default Demo;

@@ -1,0 +1,25 @@
+如何使用thunkMiddleware
+
+    //第一步：引入redux-thunk
+    const thunkMiddleware = require('redux-thunk').default
+    
+    //第二步：创建redux下的applyMiddleware对象
+    const applyMiddleware = redux.applyMiddleware
+
+    //第四部：使用middleware
+    const fetchUsers = () => {
+        return function(dispatch){
+            dispatch(fetchUsersRequest())
+            axios.get('https://jsonplaceholder.typicode.com/users')
+                .then(response => {
+                    const users = response.data.map(item => (item.name))
+                    dispatch(fetchUsersSuccess(users))
+                })
+                .catch(error => {
+                    dispatch(fetchUsersFailure(error.message))
+                })
+        }
+    }
+    
+    //第三步：在createStore()中插入middleware
+    const store = createStore(reducer, applyMiddleware(thunkMiddleware))

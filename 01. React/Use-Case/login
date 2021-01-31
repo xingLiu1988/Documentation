@@ -1,0 +1,128 @@
+1. localStorage
+        1. 下载store2包
+            npm i store2
+            import store from 'store2'
+
+        2. 创建本地车库文件夹
+            const USER_KEY = "user_key"
+            export default {
+                saveUser(user){
+                    store.set(USER_KEY, user);
+                },
+                getUser(){
+                    return store.get(USER_KEY) || {}
+                },
+                deleteUser(){
+                    store.remove(USER_KEY);
+                }
+            }
+
+2. localMemory
+        1. 创建memory.js文件夹
+
+        2. export default {
+            user:{}
+        }
+
+3. login_page
+        1. 判断用户是否已经登录，如果已经登import React, { useState } from 'react';
+        import '../css/MainMy.css';
+        import loginImg from '../imgs/login-header.svg';
+        import axios from 'axios';
+        import {useHistory} from 'react-router';
+        import userMemory from '../userMemory';
+        import localStorage from '../localStorage';
+
+        function MainMy() {
+            const history = useHistory();
+            //判断用户是否已经登录，如果是就跳转到管理页面
+            if(userMemory.user._id){
+                history.push('/vip')
+            }
+            
+
+            const [err, setErr] = useState('');
+            const [username, setUsername] = useState('');
+            const [password, setPassword] = useState('');
+            function handleSubmit(e) {
+                e.preventDefault();
+                axios.post('/userLogin', {username: username, password: password})
+                    .then(res => {
+                        const results = res.data;
+                        if(results.status === 0){
+                            const user = results.data;
+                            userMemory.user = user;
+                            localStorage.saveUser(user);
+                            history.push('/Vip');
+                        }else {
+                            setErr('用户名或密码不正确');
+                        }
+                    })
+            }
+            return (
+                <div className='MainMy' onSubmit={e => handleSubmit(e)}>
+                    <form action="/userLogin" method='post' className='form-signin'>
+                        <div>
+                            <img className="mb-4 mt-4" src={loginImg} alt="" width="72" height="72" />
+                        </div>
+                        <h4 className='mb-4'>请先登录</h4>
+                        <input type="email" value={username} onChange={e => setUsername(e.target.value)} name='username' className="form-control" placeholder='请输入邮箱'/>
+                        <input type="password" value={password} onChange={e => setPassword(e.target.value)} name="password" id="" className="form-control" placeholder='请输入密码'/>
+                        <p>{err}</p>
+                        <button className="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                        <p className="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+                    </form>
+                </div>
+            )
+        }
+
+        export default MainMy
+
+4. vip_page
+        import React from 'react'
+        import userMemory from '../userMemory' //引入内存
+        import {useHistory} from 'react-router';
+        import localStorage from '../localStorage';
+        function Vip() {
+            //判断用户是否登录，如果没有登录跳转到登录页面
+            const localUser = localStorage.getUser();
+            const history = useHistory();
+            if(!localUser._id){
+                history.push('/mainMy');
+            }
+
+            //获取内存中用户数据
+            const user = userMemory.user;
+            
+            return (
+                <div>
+                    欢迎登录会员页面
+                    <p>用户名：{user.username}</p>
+
+                </div>
+            )
+        }
+
+        export default Vip
+
+5. get_user_when_loading
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import {BrowserRouter} from 'react-router-dom';
+        import localStorage from './localStorage';
+        import userMemory from './userMemory';
+        import App from './App';
+        //获取本地用户
+        const localUser = localStorage.getUser();
+
+        //保存到内存当中
+        userMemory.user = localUser;
+
+
+
+        ReactDOM.render(<BrowserRouter><App /></BrowserRouter>
+            ,
+        document.getElementById('root')
+        );
+
+6. 

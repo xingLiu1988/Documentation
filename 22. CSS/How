@@ -1,0 +1,59 @@
+1. 鼠标移动到图片上后，图片从原有尺寸变大。
+        //让图片变大1.25倍
+        transform: scale(1.25);
+        //让图片透明度变小
+        opacity: 0.7;
+        //有时候图片变大太快太突然，我们可以选择慢点,给图片设置，不是给hover设置
+        transition: all ease 500ms;
+        
+2. 让数据垂直居中显示
+        //设置同等高度
+        height: 50px;
+        line-height: 50px;
+
+3. 鼠标移入到DIV上后显示整个DIV的边框
+        //使用Outline比较好,在DIV最外层添加个边框不改变原来尺寸
+        outline: 1px solid black;
+        
+4. 在导航栏中，鼠标移入时候显示下方信息
+        //给父元素添加hover样式，并让子元素显示
+        .parent:hover .child {
+                display: block;
+        }
+    
+5. 漂亮的阴影
+        //参数1 设置左右
+        //参数2 设置上下
+        //参数3 设置阴影厚度
+        //参数4 设置颜色
+        box-shadow: 0 0 5px rgb(179, 176, 176);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        
+6. 如何覆盖css元素
+        color: red !important
+
+7. 设置渐进颜色
+        //syntax linear-gradient(gradient_direction, color_1, color_2, ...);
+        background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
+        
+8. 漂亮的背景
+        background: url('https://cdn-media-1.freecodecamp.org/imgr/MJAkxbh.png');
+   
+9. 变形
+        skewX(15deg); //左右变形15度
+        skewY(15deg); //上下变形15度
+        
+10. 动画效果 keyframe 需要练习
+
+11. tabindex
+        tabindex = '0' //当我们按键盘上的tab时候能够移动到上面
+        tabindex = '-1' //无法通过键盘上的tab键移动到上面
+
+12. Made img responsive
+        max-width: 100%;
+        height: auto;
+
+13. px, em, vw, vh, vmin, vmax definition
+
+14. 漂亮的box-shadow
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);

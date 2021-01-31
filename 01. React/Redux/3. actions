@@ -1,0 +1,11 @@
+如何创建actions
+    
+    //第一步：创建常量
+    const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST'
+    
+    //第二步：创建actions
+    const fetchUsersRequest = () => {
+        return {
+            type: FETCH_USERS_REQUEST
+        }
+    }

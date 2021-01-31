@@ -1,0 +1,10 @@
+什么是BrowserRouter
+    1. 用于包装路由，让所有路由能够导航
+    
+如何使用：
+    1. 需要引入 
+        import {BrowserRouter} from 'react-router-dom'
+    2. 插入点
+        <BrowserRouter>
+            <Router path='/login' component={Login}></Router>
+        </BrowserRouter>
