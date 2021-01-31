@@ -1,3 +1,0 @@
-// data types
-        JavaScript = {undefined, null, boolean, string, symbol, bigint, number, object};
-

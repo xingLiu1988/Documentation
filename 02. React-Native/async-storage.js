@@ -1,1 +1,0 @@
-https://react-native-community.github.io/async-storage/docs/install
