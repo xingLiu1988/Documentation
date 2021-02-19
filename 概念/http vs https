@@ -1,0 +1,12 @@
+http
+    - hypertext transfer protocol
+
+https
+    - hypertext transfer protocol secure
+
+differences
+    - http is unsecured while https is secured
+    - http sends data over port 80 while https uses port 443
+    - http no SSL, and https required
+    - http operates at application layer, while https operates at transport layer
+    

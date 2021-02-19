@@ -1,0 +1,23 @@
+https://restfulapi.net/rest-architectural-constraints/
+
+RESTful API: 6 architectural constraints
+
+1. uniform interface (统一的接口)
+
+2. client-server
+    - client and server application must be separate without any dependency
+    - client should only know resource URIs
+
+3. stateless
+    - the server will not store anything from client side
+    - it imporves performance between client and server
+    
+4. cacheable
+    - caching of data and responses is important and should be used
+
+5. layered system
+    - where you deploy the APIs on server A
+    - where you store data on server B
+    - where you authenticate requests in Server C
+
+6. conde on demand (optional)
