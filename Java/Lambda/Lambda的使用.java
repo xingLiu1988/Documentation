@@ -12,4 +12,14 @@ Steps to use Lambda
 
     3. call and use
 
-        myName.
+        myName.doSomeThing("nihao");
+
+    
+Steps for java 7 该方式能够覆盖原来已经实现的方法
+
+MyLambdaInterface m1 = new MyLambdaInterface(){
+    @override
+    public void doSomeThing(String s){
+        System.out.println(s);
+    }
+}
