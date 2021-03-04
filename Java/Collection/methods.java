@@ -12,5 +12,5 @@
     boolean containsAll(Collection c);
 6. 删除
     boolean remove(Object obj);
-    boolean removeAll(Collection coll);
+    boolean removeAll(Collection coll); //删除交集
 7. 

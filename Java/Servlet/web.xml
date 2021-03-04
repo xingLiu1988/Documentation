@@ -1,0 +1,18 @@
+web.xml
+    这个是个描述文档，服务器使用该文件配置来查找相应的路径
+
+web.xml是如何创建的呢
+
+设置servelet-name并连接类
+<servlet>
+		<servlet-name>DirServ</servlet-name>
+		<servlet-class>com.example.directservlet.DirectServlet</servlet-class>
+</servlet>
+
+设置路径并连接servlet-name
+<servlet-mapping>
+    <servlet-name>DirServ</servlet-name>
+    <url-pattern>/dirserv</url-pattern> <!-- https://localhost:8080/HelloServlets/dirserv -->
+</servlet-mapping>
+
+这样当用户来到路径/dirserv的时候，将会查找名字为DirServ的servlet-name并找到相应的类

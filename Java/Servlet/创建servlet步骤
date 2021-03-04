@@ -1,0 +1,9 @@
+Step 1: 
+    create a class that inherits from HttpServlet or GenericServlet
+
+Step 2: 
+    Override the doGet and doPost methods()
+    we do NOT override the init() method (abstracted)
+
+Step 3: 
+    Configure the servlet in your web.xml (Deployment Descriptor)
